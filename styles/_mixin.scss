@@ -1,0 +1,69 @@
+@mixin flex_part(
+  $direction: row,
+  $align: center,
+  $justify: center,
+  $wrap_or_no: nowrap,
+  $Gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap_or_no;
+  gap: $Gap;
+}
+
+@keyframes Cursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: #d5b263;
+  }
+}
+
+@keyframes shadow-button {
+  to {
+    transform: scaleY(1.5) scaleX(1.3);
+    opacity: 0;
+  }
+}
+
+@mixin little-h1-on-big-h1($Content: "") {
+  &::after {
+    content: $Content;
+    display: block;
+    transform: translateY(-210%);
+    color: $button_color;
+    font-size: calc(1rem + 2vw);
+  }
+}
+
+@mixin chart-style($chart-width, $chart-height, $BG-color) {
+  width: $chart-width;
+  height: $chart-height;
+  border-radius: 50px;
+  background-color: $BG-color;
+}
+
+@keyframes come-in-review {
+  from {
+    transform: translateX(-50vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes come-out-review {
+  // from {
+  //   transform: translateX(0);
+  //   opacity: 1;
+  // }
+  to {
+    transform: translateX(50vw);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,793 @@
+body {
+  position: relative;
+}
+
+.header {
+  width: 100%;
+  padding: 1.2rem 0 0.3rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 99;
+  .logo-menuBtn {
+    width: 90%;
+    margin: 0 auto;
+    @include flex_part(row, center, space-between, nowrap, 0);
+  }
+}
+
+.column-menu {
+  @media screen and (max-width: 684px) {
+    background-color: #03102eee;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.938),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    li > a {
+      padding: 2rem;
+      line-height: 2;
+    }
+  }
+}
+
+.logo {
+  padding-top: 0.3rem;
+  min-width: 100px;
+  max-width: 100px;
+  & > img {
+    width: 100%;
+  }
+}
+
+#menu-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  & > div {
+    background-color: $primary_color;
+    height: 3px;
+    width: 25px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+#menu-list {
+  @media screen and (max-width: 684px) {
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    align-items: flex-start;
+    padding: 1rem 0 1rem 2rem;
+  }
+  @include flex_part(row, center, center, nowrap, 0);
+  display: none;
+  position: absolute;
+  right: 12%;
+  top: 2.6rem;
+  transition: all 0.5s ease-in-out;
+  & > li {
+    & > a:hover,
+    &:first-child > a {
+      color: $secondary_color;
+      border-bottom: 2px solid $secondary_color;
+    }
+    > a {
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      height: 2.5rem;
+      border: none;
+      @media screen and (max-width: 810px) {
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+#home {
+  font-size: 1.4rem;
+  font-weight: 900;
+  width: 100%;
+  padding: 0 2% 0 3%;
+  min-height: 100vh;
+  background-color: #1a2744b6;
+  @include flex_part(row, center, center, nowrap, 3%);
+  h1 {
+    text-align: left;
+    line-height: 1;
+    font-size: 5rem;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: $primary_color;
+  }
+  @media screen and (max-width: 900px) {
+    & h1 {
+      font-size: 4rem;
+    }
+    & h2 {
+      font-size: 2rem;
+    }
+  }
+  @media screen and (max-width: 695px) {
+    font-size: 1rem;
+    & h1 {
+      font-size: 3.5rem;
+    }
+    & h2 {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      max-height: 30px;
+    }
+    .CV {
+      margin-top: 1rem;
+    }
+  }
+  @media screen and (max-width: 589px) {
+    flex-direction: column;
+    text-align: center;
+    .home-text {
+      transform: translateY(0);
+      align-items: center;
+    }
+    & h1 {
+      text-align: center;
+    }
+    & h2 {
+      left: 0;
+      bottom: -2rem;
+    }
+    & > img {
+      margin: 1rem 0;
+      width: 40%;
+    }
+  }
+  @media screen and (max-width: 491px) {
+    & h2 {
+      left: 0;
+      bottom: -2.5rem;
+    }
+  }
+  @media screen and (max-width: 335px) {
+    & h1 {
+      font-size: 2.5rem;
+    }
+    & h2 {
+      font-size: 1.2rem;
+      line-height: 1;
+      border-right-width: 2px;
+      height: 20px;
+      bottom: -2rem;
+    }
+    & > img {
+      width: 90%;
+      margin-top: 0.5rem;
+    }
+    .CV {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.my-img {
+  width: 40%;
+  margin-top: 3rem;
+}
+
+.home-text {
+  @include flex_part(column, flex-start, center, nowrap, 0.5rem);
+  transform: translateY(3rem);
+}
+
+#my-job {
+  line-height: 1;
+  height: 40px;
+  margin-top: 1rem;
+  max-height: 40px;
+  display: inline-block;
+  padding-right: 3px;
+  border-right: 3px solid $primary_color;
+}
+
+.home-background {
+  width: 100%;
+  background-image: url("../assets/images/photo-1558481795-7f0a7c906f5e.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.CV {
+  position: relative;
+  display: inline-block;
+  margin-top: 3rem;
+  padding: 0.8rem 1rem;
+  background-color: $button_color;
+  color: $button_text_color;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  &:hover::before,
+  &:hover {
+    background-color: $button_text_color;
+    color: $button_color;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $button_color;
+    border-radius: 50px;
+    z-index: -1;
+    animation: shadow-button 2s ease-in-out infinite;
+  }
+}
+// ************** start about ***************
+.about-section {
+  line-height: 2;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 4rem;
+  min-height: 100vh;
+  > h1 {
+    @include little-h1-on-big-h1("ABOUT ME");
+  }
+  .about-Me {
+    @media screen and (max-width: 899px) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    padding: 1rem;
+    @include flex_part(row, center, center, nowrap, 10%);
+    > img {
+      @media screen and (max-width: 899px) {
+        width: 60%;
+      }
+      width: 35%;
+      min-width: 20%;
+      border: 1px solid $primary_color;
+      border-radius: 50%;
+    }
+  }
+  .about-text {
+    @media screen and (max-width: 899px) {
+      width: 100%;
+    }
+    width: 60%;
+    > h2 {
+      @media screen and (max-width: 513px) {
+        font-size: 1rem;
+        font-weight: 900;
+      }
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #293040;
+    }
+    > p {
+      color: #293040;
+      @media screen and (max-width: 513px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #my-info {
+    @media screen and (max-width: 1062px) {
+      line-height: 2.5;
+    }
+    width: 100%;
+    p {
+      @media screen and (max-width: 1062px) {
+        width: 100%;
+      }
+      @media screen and (max-width: 899px) {
+        width: 50%;
+      }
+      @media screen and (max-width: 628px) {
+        width: 90%;
+      }
+      @media screen and (max-width: 347px) {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      display: inline-block;
+      width: 50%;
+      color: #293040;
+    }
+    line-height: 3;
+    padding-top: 1rem;
+  }
+}
+// **************** end about ****************
+
+// ************** start skills ***************
+.skills-section {
+  line-height: 2;
+  width: 80%;
+  margin: 0 auto;
+  padding: 5rem 0 2.5rem;
+  min-height: 100vh;
+  > h1 {
+    @include little-h1-on-big-h1("MY SKILLS");
+    padding-bottom: 3rem;
+  }
+}
+.Skills-Chart {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 2rem;
+  span,
+  h3 {
+    color: #293040;
+  }
+  @media screen and (max-width: 629px) {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+
+.skill-name-percent {
+  @include flex-part(row, center, space-between, nowrap, 0);
+}
+
+.skill-percent {
+  @include chart-style(100%, 15px, #2930401e);
+  > div {
+    width: 0;
+    height: 100%;
+    border-radius: 50px;
+  }
+}
+// *************** end skills ****************
+
+// ************** start services ***************
+.services-section {
+  line-height: 2;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5rem 0 2.5rem;
+  min-height: 100vh;
+}
+.services-h1 {
+  @include little-h1-on-big-h1("MY SERVICES");
+  padding-bottom: 3rem;
+  @media screen and (max-width: 373px) {
+    font-size: 50px;
+    &::after {
+      transform: translateY(-182%);
+      font-size: 20px;
+    }
+  }
+}
+.services-container {
+  > div {
+    @include flex-part(column, center, center, nowrap, 0.5rem);
+    padding: 1rem 2rem 1rem;
+    border-radius: 6px;
+    width: 300px;
+    height: 300px;
+    box-shadow: rgba(113, 205, 248, 0.35) 0px 5px 15px;
+    &:hover {
+      > i {
+        font-size: 0;
+      }
+      > p {
+        height: 70%;
+        width: 100%;
+      }
+    }
+    > i {
+      font-size: 5rem;
+      color: #293040;
+      transition: font-size 0.6s ease-in-out;
+    }
+    > h3 {
+      color: rgb(204, 33, 204);
+      font-family: "Exo", sans-serif;
+      text-align: center;
+    }
+    > p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #293040;
+      text-align: center;
+      height: 0;
+      overflow-y: hidden;
+      transition: all 0.6s ease-in-out;
+    }
+  }
+  @include flex-part(row, center, center, nowrap, 2rem);
+  @media screen and (max-width: 879px) {
+    > div {
+      padding: 0 1rem;
+    }
+  }
+  @media screen and (max-width: 774px) {
+    flex-direction: column;
+    gap: 1rem;
+    > div {
+      width: 100%;
+      height: 150px;
+    }
+  }
+  @media screen and (max-width: 475px) {
+    > div {
+      height: 200px;
+    }
+  }
+}
+
+// *************** end services ****************
+
+// ************** start portfolio ***************
+.portfolio-section {
+  line-height: 2;
+  position: relative;
+  width: 100%;
+
+  padding: 5rem 5% 2.5rem;
+  min-height: 100vh;
+  > h1 {
+    @include little-h1-on-big-h1("MY PORTFOLIO");
+    padding-bottom: 3rem;
+    @media screen and (max-width: 599px) {
+      font-size: 70px;
+      &::after {
+        transform: translateY(-182%);
+      }
+    }
+    @media screen and (max-width: 472px) {
+      font-size: 50px;
+      &::after {
+        transform: translateY(-170%);
+        font-size: 20px;
+      }
+    }
+  }
+}
+.portfolio-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(5, 75.5px);
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(6, 100px);
+    #img1 {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+    #img2 {
+      grid-column: 1 / 2;
+      grid-row: 3 / 5;
+    }
+    #img3 {
+      grid-column: 2 / 3;
+      grid-row: 3 / 5;
+    }
+    #img4 {
+      grid-column: 1 / 2;
+      grid-row: 5 / 7;
+    }
+    #img5 {
+      grid-column: 2 / 3;
+      grid-row: 5 / 7;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    @include flex-part(column, center, center, nowrap, 1rem);
+    height: 1000px;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  grid-gap: 1rem;
+  > div {
+    position: relative;
+    border: 2px solid #293040;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    & > img {
+      width: 100%;
+    }
+    & > div {
+      position: absolute;
+    }
+    &:hover > div {
+      transform: scale(1);
+    }
+    &,
+    & > div {
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+      @include flex-part(row, center, center, nowrap, 0);
+    }
+  }
+}
+#img1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+#img2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 6;
+}
+#img3 {
+  grid-column: 3 / 4;
+  grid-row: 1 / 4;
+}
+#img4 {
+  grid-column: 1 / 2;
+  grid-row: 3 / 6;
+}
+#img5 {
+  grid-column: 3 / 4;
+  grid-row: 4 / 6;
+}
+.magnifier-img {
+  width: 90%;
+  height: 80%;
+  top: 10%;
+  left: 5%;
+  background-color: rgba(113, 205, 248, 0.9);
+  transform: scale(0);
+  transition: transform 0.6s ease-in-out;
+  & > span {
+    display: block;
+    line-height: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 7rem;
+    font-weight: 900;
+  }
+}
+// #big-pic{
+//   position: sticky;
+//   z-index: 10000;
+//   padding: 10%;
+// background-color: #29304007;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   visibility: hidden;
+//   // display: none;
+//   >img{
+//     width: 100%;
+//   }
+
+// }
+// *************** end portfolio ****************
+
+// *************** start review ****************
+.reviews-section {
+  line-height: 2;
+  width: 100%;
+  padding: 5rem 5% 5rem;
+  min-height: 100vh;
+  > h1 {
+    @include little-h1-on-big-h1("CLIENTS SAY");
+    padding-bottom: 3rem;
+  }
+}
+.review-customer {
+  width: 60%;
+  height: 300px;
+  margin: 0 auto;
+  @include flex-part(row, center, center, nowrap, 1rem);
+  box-shadow: rgba(0, 0, 0, 0.226) 0px 3px 8px;
+  padding: 1rem 2rem;
+
+  > img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  > p {
+    font-size: 0.9rem;
+    padding: 1rem;
+    color: #293040;
+    > span {
+      line-height: 3;
+      font-weight: 800;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    height: 350px;
+  }
+  @media screen and (max-width: 900px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 700px) {
+    width: 80%;
+    height: 500px;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.5rem 1rem;
+  }
+  @media screen and (max-width: 470px) {
+    width: 90%;
+    height: 600px;
+  }
+}
+.button-container {
+  @include flex-part(row, center, center, nowrap, 0.5rem);
+  padding: 2rem;
+}
+#circles {
+  @include flex-part(row, center, center, nowrap, 0.5rem);
+}
+.reviews-btn {
+  padding: 0.2rem 0.2rem 0.1rem 0.2rem;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.226) 0px 3px 8px;
+  cursor: pointer;
+  > i {
+    color: #293040;
+  }
+}
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2930403b;
+  cursor: pointer;
+}
+// *************** end review ****************
+
+// *************** start contact ****************
+.contact-section {
+  line-height: 2;
+  width: 70%;
+  @media screen and (max-width: 500px) {
+    width: 80%;
+  }
+  margin: 0 auto 3rem;
+  > h1 {
+    @include little-h1-on-big-h1("CONTACT ME");
+    padding-bottom: 3rem;
+    @media screen and (max-width: 540px) {
+      font-size: 60px;
+      &::after {
+        transform: translateY(-156%);
+      }
+    }
+    @media screen and (max-width: 510px) {
+      &::after {
+        transform: translateY(-160%);
+      }
+    }
+    @media screen and (max-width: 445px) {
+      &::after {
+        transform: translateY(-170%);
+      }
+    }
+    @media screen and (max-width: 390px) {
+      font-size: 50px;
+      &::after {
+        font-size: 20px;
+        transform: translateY(-170%);
+      }
+    }
+  }
+}
+.inputs {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  grid-template-rows: repeat(6, 40px);
+  grid-gap: 1rem;
+  > button {
+    display: block;
+    font-size: 1rem;
+    width: 100%;
+    height: 50px;
+    background-color: #293040;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.226) 0px 3px 8px;
+    margin: 1rem auto;
+    cursor: pointer;
+    border-radius: 50px;
+    &:hover {
+      background-color: $button_color;
+      color: $button_text_color;
+    }
+  }
+  .sent-btn {
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+  }
+  .reset-btn {
+    grid-column: 3 / 4;
+    grid-row: 6 / 7;
+  }
+  > input,
+  > textarea {
+    padding: 0.5rem;
+    border: 2px solid $primary_color;
+    color: #293040;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: "Roboto", sans-serif;
+  }
+  #name-input {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  #email-input {
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+  }
+  #sub-input {
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+  }
+  #msg-input {
+    grid-column: 1 / 5;
+    grid-row: 3 / 6;
+  }
+  @media screen and (max-width: 750px) {
+    grid-template-rows: repeat(7, 50px);
+    #name-input {
+      grid-column: 1 / 5;
+      grid-row: 1 / 2;
+    }
+    #email-input {
+      grid-column: 1 / 5;
+      grid-row: 2 / 3;
+    }
+    #sub-input {
+      grid-row: 3 / 4;
+    }
+    #msg-input {
+      grid-row: 4 / 7;
+    }
+    .sent-btn {
+      grid-column: 1 / 3;
+      grid-row: 7 / 8;
+    }
+    .reset-btn {
+      grid-column: 3 / 5;
+      grid-row: 7 / 8;
+    }
+  }
+}
+// ***************  end contact  ****************
+
+// ************** start footer **************
+footer {
+  margin-top: 5rem;
+  width: 100%;
+  height: 70vh;
+  background-color: #293040;
+  background-image: url("../assets/images/background.png");
+  background-repeat: no-repeat;
+  > div {
+    @include flex-part(column, center, center, nowrap, 3rem);
+    width: 100%;
+    height: 100%;
+    background-color: #293040ef;
+    > img {
+      padding-left: 4rem;
+      width: 300px;
+    }
+    > div {
+      @include flex-part(row, center, center, nowrap, 1rem);
+    }
+    > p {
+      text-align: center;
+      @media screen and (max-width: 350px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+// **************  end footer  **************
