@@ -103,7 +103,7 @@ menuBtn.addEventListener("click", function () {
   if (!openedMenu) {
     secondLine.style.opacity = 0;
     firstLine.style.transformOrigin = "-7px 10px";
-    firstLine.style.transform = "translateY(-8px)rotate(45deg)";
+    firstLine.style.transform = "translateY(-11px)rotate(45deg)";
     thirdLine.style.transform = "translateY(-8px)rotate(-45deg)";
     document.getElementById("Hdr").classList.toggle("column-menu");
     menuList.style.display = "flex";
@@ -123,10 +123,9 @@ window.onscroll = function () {
 
 function scrollFunction() {
   const percentDisplay = document.querySelectorAll(".skill-percent>div");
-  if (
-    document.body.scrollTop > 900 ||
-    document.documentElement.scrollTop > 900
-  ) {
+  const headerBox = document.getElementById("Hdr");
+  if ((document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) && (document.body.scrollTop < 1000 ||
+    document.documentElement.scrollTop < 1000)) {
     percentDisplay.forEach((element) => {
       element.style.width = element.getAttribute("percent");
       element.style.transition = "width 2s ease-in-out";
@@ -135,6 +134,16 @@ function scrollFunction() {
     percentDisplay.forEach((element) => {
       element.style.width = 0;
     });
+  }
+  if (
+    document.body.scrollTop > 500 ||
+    document.documentElement.scrollTop > 500
+  ) {
+    headerBox.style.backgroundColor="#293040e0";
+    headerBox.style.boxShadow= "rgba(0, 0, 0, 0.5) 0px 3px 8px";
+  }else{
+    headerBox.style.backgroundColor="transparent";
+    headerBox.style.boxShadow= "none";
   }
 }
 

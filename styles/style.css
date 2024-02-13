@@ -81,7 +81,7 @@ body {
 
 .header {
   width: 100%;
-  padding: 1.2rem 0 0.3rem;
+  padding: 0.5rem 0 0.3rem;
   position: fixed;
   top: 0;
   right: 0;
@@ -127,7 +127,7 @@ body {
 }
 #menu-btn > div {
   background-color: #D5B263;
-  height: 3px;
+  height: 2px;
   width: 25px;
   margin: 5px;
   border-radius: 5px;
@@ -144,7 +144,7 @@ body {
   display: none;
   position: absolute;
   right: 12%;
-  top: 2.6rem;
+  top: 1.9rem;
   transition: all 0.5s ease-in-out;
 }
 @media screen and (max-width: 684px) {
@@ -893,7 +893,7 @@ body {
 .inputs {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 22%);
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(6, 40px);
   grid-gap: 1rem;
 }
