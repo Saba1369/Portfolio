@@ -63,6 +63,7 @@ const reviews = [
 const MyJob = document.getElementById("my-job");
 const menuBtn = document.getElementById("menu-btn");
 const menuList = document.getElementById("menu-list");
+const headerBox = document.getElementById("Hdr");
 let jobNum = 0;
 let openedMenu = false;
 
@@ -105,7 +106,7 @@ menuBtn.addEventListener("click", function () {
     firstLine.style.transformOrigin = "-7px 10px";
     firstLine.style.transform = "translateY(-11px)rotate(45deg)";
     thirdLine.style.transform = "translateY(-8px)rotate(-45deg)";
-    document.getElementById("Hdr").classList.toggle("column-menu");
+    headerBox.classList.toggle("column-menu");
     menuList.style.display = "flex";
     openedMenu = true;
   } else {
@@ -113,7 +114,7 @@ menuBtn.addEventListener("click", function () {
     firstLine.style.transform = "none";
     thirdLine.style.transform = "none";
     menuList.style.display = "none";
-    document.getElementById("Hdr").classList.remove("column-menu");
+    headerBox.classList.remove("column-menu");
     openedMenu = false;
   }
 });
@@ -137,11 +138,10 @@ window.onscroll = function () {
 
 function scrollFunction() {
   const percentDisplay = document.querySelectorAll(".skill-percent>div");
-  const headerBox = document.getElementById("Hdr");
-  if (
-    document.body.scrollTop > 900 ||
-    document.documentElement.scrollTop > 900
-  ) {
+  const bodySTop = document.body.scrollTop;
+  const docSTop = document.documentElement.scrollTop;
+
+  if (bodySTop > 900 || docSTop > 900) {
     percentDisplay.forEach((element) => {
       element.style.width = element.getAttribute("percent");
       element.style.transition = "width 2s ease-in-out";
@@ -151,39 +151,36 @@ function scrollFunction() {
       element.style.width = 0;
     });
   }
-  if (document.body.scrollTop > 30 || document.documentElement.scrollTop >30) {
+  if (bodySTop > 30 || docSTop > 30) {
     headerBox.style.backgroundColor = "#03102eee";
     headerBox.style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 3px 8px";
+    headerBox.classList.add("animate__fadeInUp");
+    
   } else {
     headerBox.style.backgroundColor = "transparent";
     headerBox.style.boxShadow = "none";
     document.getElementsByClassName("column-menu").backgroundColor =
       "#03102eee";
+      headerBox.classList.remove("animate__fadeInUp");
   }
   menuItem.forEach((item) => {
     let accessSection = document.getElementById(`${item.textContent}`);
     if (
-      document.body.scrollTop >= accessSection.offsetTop - 150 ||
-      document.documentElement.scrollTop >= accessSection.offsetTop - 150
+      bodySTop >= accessSection.offsetTop - 150 ||
+      docSTop >= accessSection.offsetTop - 150
     ) {
       addBorderBottom(item.textContent);
     }
   });
   const GoUpBtn = document.getElementById("go-up");
   const homeLocation = document.getElementById("Home").offsetTop;
-  if (
-    document.body.scrollTop > homeLocation + 50 ||
-    document.documentElement.scrollTop > homeLocation + 50
-  ) {
+  if (bodySTop > homeLocation + 100 || docSTop > homeLocation + 100) {
     GoUpBtn.style.display = "block";
   } else {
     GoUpBtn.style.display = "none";
   }
   const contactLocation = document.getElementById("Contact").offsetTop;
-  if (
-    document.body.scrollTop > contactLocation + 150 ||
-    document.documentElement.scrollTop > contactLocation + 150
-  ) {
+  if (bodySTop > contactLocation + 150 || docSTop > contactLocation + 150) {
     addBorderBottom();
   }
 }
@@ -233,19 +230,12 @@ function OnOffCircles(OnCircle) {
 let userNumber = -1;
 let lastUserNumber = -1;
 function showReview(userNum) {
-  // if (lastUserNumber >= 0) {
-  //   document.getElementById(`R${lastUserNumber}`).style.animation ="come-out-review 2.5s ease-in-out 1";
-  //     console.log(`R${lastUserNumber}`);
-  // }
-
   document.getElementById(
     "reviews-container"
   ).innerHTML = `<div class="review-customer" id="R${userNum}">
 <img src="${reviews[userNum].img}" alt="customer-img" />
 <p>${reviews[userNum].text}<br/><span>${reviews[userNum].name}</span></p>
 </div>`;
-  // document.getElementById(`R${userNum}`).style.animation =
-  //   "come-in-review 2.5s ease-in-out 1";
   OnOffCircles(userNum);
 }
 
@@ -302,7 +292,8 @@ function autoShowReview() {
 }
 
 function scrollToTop() {
-  const position = document.documentElement.scrollTop || document.body.scrollTop;
+  const position =
+    document.documentElement.scrollTop || document.body.scrollTop;
   if (position > 0) {
     window.requestAnimationFrame(scrollToTop);
     window.scrollTo(0, position - position / 8);
