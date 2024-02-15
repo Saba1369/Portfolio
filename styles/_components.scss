@@ -1,7 +1,7 @@
 body {
   position: relative;
 }
-
+// ************** start header ***************
 .header {
   width: 100%;
   padding: 0.5rem 0 0.3rem;
@@ -19,7 +19,7 @@ body {
 
 .column-menu {
   @media screen and (max-width: 684px) {
-    background-color: #03102eee;
+    background-color: #03102eee !important;
     transition: background-color 0.3s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.938),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -70,8 +70,8 @@ body {
   & > li {
     & > a:hover,
     &:first-child > a {
-      color: $secondary_color;
-      border-bottom: 2px solid $secondary_color;
+      color: #C9AD8B;
+      border-bottom: 2px solid #C9AD8B;
     }
     > a {
       padding: 0.8rem;
@@ -87,8 +87,10 @@ body {
     }
   }
 }
+// ************** end header ***************
 
-#home {
+// ************** start home ***************
+#Home {
   font-size: 1.4rem;
   font-weight: 900;
   width: 100%;
@@ -229,21 +231,19 @@ body {
     animation: shadow-button 2s ease-in-out infinite;
   }
 }
+// ************** end home ***************
+
 // ************** start about ***************
 .about-section {
   line-height: 2;
   width: 90%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding-top: 6rem;
   min-height: 100vh;
-  > h1 {
-    @include little-h1-on-big-h1("ABOUT ME");
+  > h3 {
+    @include little-h3-on-big-h3("ABOUT ME");
   }
   .about-Me {
-    @media screen and (max-width: 899px) {
-      flex-direction: column;
-      gap: 2rem;
-    }
     padding: 1rem;
     @include flex_part(row, center, center, nowrap, 10%);
     > img {
@@ -255,38 +255,43 @@ body {
       border: 1px solid $primary_color;
       border-radius: 50%;
     }
-  }
-  .about-text {
-    @media screen and (max-width: 899px) {
-      width: 100%;
-    }
-    width: 60%;
-    > h2 {
+    >figcaption{
+      width: 60%;
+      >h4{
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $secondary_color;
+      }
+      >p{
+        color: $secondary_color;
+      }
       @media screen and (max-width: 513px) {
+        >h4{
         font-size: 1rem;
         font-weight: 900;
+        }
+        > p {
+          font-size: 1rem;
+        }
       }
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #293040;
     }
-    > p {
-      color: #293040;
-      @media screen and (max-width: 513px) {
-        font-size: 1rem;
+    @media screen and (max-width: 899px) {
+      flex-direction: column;
+      gap: 2rem;
+      >figcaption{
+        width: 100%;
       }
     }
   }
 
   #my-info {
-    @media screen and (max-width: 1062px) {
-      line-height: 2.5;
-    }
+    line-height: 3;
+    padding-top: 1rem;
     width: 100%;
     p {
-      @media screen and (max-width: 1062px) {
-        width: 100%;
-      }
+      display: inline-block;
+      width: 50%;
+      color: $secondary_color;
       @media screen and (max-width: 899px) {
         width: 50%;
       }
@@ -297,13 +302,13 @@ body {
         font-size: 0.8rem;
         font-weight: 500;
       }
-
-      display: inline-block;
-      width: 50%;
-      color: #293040;
     }
-    line-height: 3;
-    padding-top: 1rem;
+    @media screen and (max-width: 1062px) {
+      line-height: 2.5;
+      >p{
+        width: 100%;
+      }
+    }
   }
 }
 // **************** end about ****************
@@ -315,8 +320,8 @@ body {
   margin: 0 auto;
   padding: 5rem 0 2.5rem;
   min-height: 100vh;
-  > h1 {
-    @include little-h1-on-big-h1("MY SKILLS");
+  > h3 {
+    @include little-h3-on-big-h3("MY SKILLS");
     padding-bottom: 3rem;
   }
 }
@@ -325,8 +330,8 @@ body {
   grid-template-columns: repeat(2, 50%);
   grid-gap: 2rem;
   span,
-  h3 {
-    color: #293040;
+  h4 {
+    color: $secondary_color;
   }
   @media screen and (max-width: 629px) {
     grid-template-columns: repeat(1, 100%);
@@ -355,8 +360,8 @@ body {
   padding: 5rem 0 2.5rem;
   min-height: 100vh;
 }
-.services-h1 {
-  @include little-h1-on-big-h1("MY SERVICES");
+.services-h3 {
+  @include little-h3-on-big-h3("MY SERVICES");
   padding-bottom: 3rem;
   @media screen and (max-width: 373px) {
     font-size: 50px;
@@ -385,10 +390,10 @@ body {
     }
     > i {
       font-size: 5rem;
-      color: #293040;
+      color: $secondary_color;
       transition: font-size 0.6s ease-in-out;
     }
-    > h3 {
+    > h4 {
       color: rgb(204, 33, 204);
       font-family: "Exo", sans-serif;
       text-align: center;
@@ -397,7 +402,7 @@ body {
       font-size: 1rem;
       font-weight: 400;
       line-height: 1.7;
-      color: #293040;
+      color: $secondary_color;
       text-align: center;
       height: 0;
       overflow-y: hidden;
@@ -435,8 +440,8 @@ body {
 
   padding: 5rem 5% 2.5rem;
   min-height: 100vh;
-  > h1 {
-    @include little-h1-on-big-h1("MY PORTFOLIO");
+  > h3 {
+    @include little-h3-on-big-h3("MY PORTFOLIO");
     padding-bottom: 3rem;
     @media screen and (max-width: 599px) {
       font-size: 70px;
@@ -491,7 +496,7 @@ body {
   grid-gap: 1rem;
   > div {
     position: relative;
-    border: 2px solid #293040;
+    border: 2px solid $secondary_color;
     width: 100%;
     height: 100%;
     overflow-y: hidden;
@@ -548,21 +553,17 @@ body {
     font-weight: 900;
   }
 }
-// #big-pic{
-//   position: sticky;
-//   z-index: 10000;
-//   padding: 10%;
-// background-color: #29304007;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   visibility: hidden;
-//   // display: none;
-//   >img{
-//     width: 100%;
-//   }
-
-// }
+#big-pic{
+  position:absolute;
+  z-index: 10000;
+  top: 20%;
+  left: 0;
+  width: 100%;
+    padding: 3rem 10%;
+  >img{
+    width: 100%;
+  }
+}
 // *************** end portfolio ****************
 
 // *************** start review ****************
@@ -571,8 +572,8 @@ body {
   width: 100%;
   padding: 5rem 5% 5rem;
   min-height: 100vh;
-  > h1 {
-    @include little-h1-on-big-h1("CLIENTS SAY");
+  > h3 {
+    @include little-h3-on-big-h3("CLIENTS SAY");
     padding-bottom: 3rem;
   }
 }
@@ -592,7 +593,7 @@ body {
   > p {
     font-size: 0.9rem;
     padding: 1rem;
-    color: #293040;
+    color: $secondary_color;
     > span {
       line-height: 3;
       font-weight: 800;
@@ -629,7 +630,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.226) 0px 3px 8px;
   cursor: pointer;
   > i {
-    color: #293040;
+    color: $secondary_color;
   }
 }
 .circle {
@@ -645,12 +646,12 @@ body {
 .contact-section {
   line-height: 2;
   width: 70%;
+  margin: 0 auto 3rem;
   @media screen and (max-width: 500px) {
     width: 80%;
   }
-  margin: 0 auto 3rem;
-  > h1 {
-    @include little-h1-on-big-h1("CONTACT ME");
+  > h3 {
+    @include little-h3-on-big-h3("CONTACT ME");
     padding-bottom: 3rem;
     @media screen and (max-width: 540px) {
       font-size: 60px;
@@ -680,7 +681,7 @@ body {
 .inputs {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, calc(25% - .8rem));
   grid-template-rows: repeat(6, 40px);
   grid-gap: 1rem;
   > button {
@@ -688,7 +689,7 @@ body {
     font-size: 1rem;
     width: 100%;
     height: 50px;
-    background-color: #293040;
+    background-color: $secondary_color;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.226) 0px 3px 8px;
     margin: 1rem auto;
@@ -711,7 +712,7 @@ body {
   > textarea {
     padding: 0.5rem;
     border: 2px solid $primary_color;
-    color: #293040;
+    color: $secondary_color;
     border-radius: 20px;
     font-size: 1rem;
     font-weight: 400;
@@ -761,13 +762,33 @@ body {
   }
 }
 // ***************  end contact  ****************
+.go-up-btn{
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 7px 4px 4px;
+  z-index: 5000;
+  border: 1px solid $secondary_color;
+  border-radius: 50%;
+  border-style: ridge;
+  background-color: white;
+  border-width: 5px;
+  animation: up-down 1s ease-in-out infinite alternate-reverse;
+  &:hover{
+  background-color: aqua;
+  }
+ >i{
+    color: $secondary_color;
+  }
+}
+// ************** end main **************
 
 // ************** start footer **************
 footer {
   margin-top: 5rem;
   width: 100%;
   height: 70vh;
-  background-color: #293040;
+  background-color: $secondary_color;
   background-image: url("../assets/images/background.png");
   background-repeat: no-repeat;
   > div {

@@ -117,6 +117,20 @@ menuBtn.addEventListener("click", function () {
     openedMenu = false;
   }
 });
+
+const menuItem = document.querySelectorAll("#menu-list a");
+function addBorderBottom(idName) {
+  menuItem.forEach((item) => {
+    if (item.textContent === idName) {
+      item.style.borderBottom = "2px solid #C9AD8B";
+      item.style.color = "#C9AD8B";
+    } else {
+      item.style.borderBottom = "none";
+      item.style.color = "#D5B263";
+    }
+  });
+}
+
 window.onscroll = function () {
   setTimeout(scrollFunction, 300);
 };
@@ -124,8 +138,10 @@ window.onscroll = function () {
 function scrollFunction() {
   const percentDisplay = document.querySelectorAll(".skill-percent>div");
   const headerBox = document.getElementById("Hdr");
-  if ((document.body.scrollTop > 900 || document.documentElement.scrollTop > 900) && (document.body.scrollTop < 1000 ||
-    document.documentElement.scrollTop < 1000)) {
+  if (
+    document.body.scrollTop > 900 ||
+    document.documentElement.scrollTop > 900
+  ) {
     percentDisplay.forEach((element) => {
       element.style.width = element.getAttribute("percent");
       element.style.transition = "width 2s ease-in-out";
@@ -135,15 +151,40 @@ function scrollFunction() {
       element.style.width = 0;
     });
   }
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop >30) {
+    headerBox.style.backgroundColor = "#03102eee";
+    headerBox.style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 3px 8px";
+  } else {
+    headerBox.style.backgroundColor = "transparent";
+    headerBox.style.boxShadow = "none";
+    document.getElementsByClassName("column-menu").backgroundColor =
+      "#03102eee";
+  }
+  menuItem.forEach((item) => {
+    let accessSection = document.getElementById(`${item.textContent}`);
+    if (
+      document.body.scrollTop >= accessSection.offsetTop - 150 ||
+      document.documentElement.scrollTop >= accessSection.offsetTop - 150
+    ) {
+      addBorderBottom(item.textContent);
+    }
+  });
+  const GoUpBtn = document.getElementById("go-up");
+  const homeLocation = document.getElementById("Home").offsetTop;
   if (
-    document.body.scrollTop > 500 ||
-    document.documentElement.scrollTop > 500
+    document.body.scrollTop > homeLocation + 50 ||
+    document.documentElement.scrollTop > homeLocation + 50
   ) {
-    headerBox.style.backgroundColor="#293040e0";
-    headerBox.style.boxShadow= "rgba(0, 0, 0, 0.5) 0px 3px 8px";
-  }else{
-    headerBox.style.backgroundColor="transparent";
-    headerBox.style.boxShadow= "none";
+    GoUpBtn.style.display = "block";
+  } else {
+    GoUpBtn.style.display = "none";
+  }
+  const contactLocation = document.getElementById("Contact").offsetTop;
+  if (
+    document.body.scrollTop > contactLocation + 150 ||
+    document.documentElement.scrollTop > contactLocation + 150
+  ) {
+    addBorderBottom();
   }
 }
 
@@ -158,28 +199,22 @@ function AddSkillsChart() {
   const Skills = document.getElementById("skills-chart");
   SkillPercentage.forEach((skill) => {
     Skills.innerHTML += `<div class="skill-chart">
-    <div class="skill-name-percent"><h3>${skill.title}</h3><span>${skill.value}</span></div>
+    <div class="skill-name-percent"><h4>${skill.title}</h4><span>${skill.value}</span></div>
     <div class="skill-percent"><div percent=${skill.value} style="background-color:${skill.color};"></div></div>
   </div>`;
   });
 }
+const BigPic = document.getElementById("big-pic");
+function magnifyingPic(srcImg) {
+  BigPic.innerHTML = `<img src="${srcImg}" alt="image">`;
+  BigPic.style.backgroundColor = "#03102e3f";
+}
 
-// const magnifier = document.querySelectorAll(".magnifier-img>span");
-//  const magnifierPic = document.getElementById("big-pic");
-// magnifier.forEach((item, number) => {
-//   item.addEventListener("click", function () {
-//     const pic = document.querySelector(`#img${number + 1}>img`);
-//     const picSrc = pic.getAttribute("src");
+function closePic() {
+  BigPic.innerHTML = "";
+  BigPic.style.backgroundColor = "transparent";
+}
 
-//     magnifierPic.style.visibility = "visible";
-//     magnifierPic.innerHTML = `<img src="${picSrc}" alt="pic" />`;
-//   });
-// });
-
-// magnifierPic.addEventListener("click", function(){
-//   magnifierPic.style.visibility = "hidden"
-//     magnifierPic.innerHTML = "";
-// });
 function addCircles() {
   for (let i = 0; i < reviews.length; i++) {
     document.getElementById(
@@ -202,7 +237,7 @@ function showReview(userNum) {
   //   document.getElementById(`R${lastUserNumber}`).style.animation ="come-out-review 2.5s ease-in-out 1";
   //     console.log(`R${lastUserNumber}`);
   // }
-  
+
   document.getElementById(
     "reviews-container"
   ).innerHTML = `<div class="review-customer" id="R${userNum}">
@@ -264,6 +299,14 @@ function autoShowReview() {
   }
   showReview(userNumber);
   setTimeout(autoShowReview, 5000);
+}
+
+function scrollToTop() {
+  const position = document.documentElement.scrollTop || document.body.scrollTop;
+  if (position > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, position - position / 8);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {

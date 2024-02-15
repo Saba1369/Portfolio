@@ -47,13 +47,13 @@
       <nav class="navigation">
         <ul id="menu-list">
           
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#reviews-part">Review</a></li>
-          <li><a href="#contact-part">Contact</a></li>
+          <li><a href="#Home" onclick="addBorderBottom('Home')">Home</a></li>
+          <li><a href="#About" onclick="addBorderBottom('About')">About</a></li>
+          <li><a href="#Skills" onclick="addBorderBottom('Skills')">Skills</a></li>
+          <li><a href="#Services" onclick="addBorderBottom('Services')">Services</a></li>
+          <li><a href="#Portfolio" onclick="addBorderBottom('Portfolio')">Portfolio</a></li>
+          <li><a href="#Review" onclick="addBorderBottom('Review')">Review</a></li>
+          <li><a href="#Contact" onclick="addBorderBottom('Contact')">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -61,10 +61,10 @@
 
     <!-- ************** Start main ************** -->
     <main>
-      <!-- <div id="big-pic"></div> -->
+      
       <!-- ************** Start home ************** -->
       <div class="home-background">
-        <div id="home">
+        <div id="Home">
           <img class="my-img" src="assets/images/Character-me.png" alt="Me" />
           <div class="home-text">
             <span>Hello, I'm</span>
@@ -72,7 +72,7 @@
             <h2 id="my-job"></h2>
             <a
               class="CV"
-              href="/malzomat/v627-aew-39-technologybackground.jpg"
+              href="assets/CV/philosophy.rar"
               download
               >Download CV</a
             >
@@ -82,12 +82,12 @@
       <!-- *************** end home *************** -->
 
       <!-- ************** Start about ************* -->
-      <section class="about-section" id="about">
-        <h1 class="about-h1">ABOUT</h1>
+      <section class="about-section" id="About">
+        <h3 class="about-h3">ABOUT</h3>
         <figure class="about-Me">
           <img src="./assets/images/about-bg.jpg" alt="Me" />
           <figcaption class="about-text">
-            <h2>Front-End Web Developer & Designer</h2>
+            <h4>Front-End Web Developer & Designer</h4>
             <p class="about-p">
               I am a software engineer with a passion for building beautiful and
               functional websites. I have a strong background in web development
@@ -100,19 +100,19 @@
       <!-- ************** end about *************** -->
 
       <!-- ************** start skills *************** -->
-      <section class="skills-section" id="skills">
-        <h1 class="skills-h1">SKILLS</h1>
+      <section class="skills-section" id="Skills">
+        <h3 class="skills-h3">SKILLS</h3>
         <div id="skills-chart" class="Skills-Chart"></div>
       </section>
       <!-- *************** end skills **************** -->
 
       <!-- ************** start services *************** -->
-      <section class="services-section" id="services">
-        <h1 class="services-h1">SERVICES</h1>
+      <section class="services-section" id="Services">
+        <h3 class="services-h3">SERVICES</h3>
         <div class="services-container">
           <div class="service">
             <i class="material-symbols-outlined">draw</i>
-            <h3>Web Design</h3>
+            <h4>Web Design</h4>
             <p>
               Create and build websites and web pages by combining any number of
               visual design elements including text, photos, graphics,
@@ -121,7 +121,7 @@
           </div>
           <div class="service">
             <i class="material-symbols-outlined">devices</i>
-            <h3>Web Responsive</h3>
+            <h4>Web Responsive</h4>
             <p>
               Responsive Web Design is about using HTML and CSS to automatically
               resize, hide, shrink, or enlarge, a website, to make it look good
@@ -130,7 +130,7 @@
           </div>
           <div class="service">
             <i class="material-symbols-outlined">laptop_chromebook</i>
-            <h3>Web development</h3>
+            <h4>Web development</h4>
             <p>
               Creating, building, and maintaining of websites. It includes
               aspects such as web design, web publishing, web programming, and
@@ -142,36 +142,37 @@
       <!-- *************** end services **************** -->
 
       <!-- *************** start portfolio **************** -->
-      <section class="portfolio-section" id="portfolio">
-        <h1 class="portfolio-h1">PORTFOLIO</h1>
+      <section class="portfolio-section" id="Portfolio">
+        <div id="big-pic" onclick="closePic()"></div>
+        <h3 class="portfolio-h3">PORTFOLIO</h3>
         <div id="portfolio-container" class="portfolio-gallery">
           <div id="img1">
             <img src="assets/images/pic2.PNG" alt="pic1" />
-            <div class="magnifier-img"><span>+</span></div>
+            <div class="magnifier-img"><span onclick="magnifyingPic('assets/images/pic2.PNG')">+</span></div>
           </div>
           <div id="img2">
             <img src="assets/images/pic1.png" alt="pic2" />
-            <div class="magnifier-img"><span>+</span></div>
+            <div class="magnifier-img"><span onclick="magnifyingPic('assets/images/pic1.png')">+</span></div>
           </div>
           <div id="img3">
             <img src="assets/images/pic31.PNG" alt="pic3" />
-            <div class="magnifier-img"><span>+</span></div>
+            <div class="magnifier-img"><span onclick="magnifyingPic('assets/images/pic31.PNG')">+</span></div>
           </div>
           <div id="img4">
             <img src="assets/images/pic4.PNG" alt="pic4" />
-            <div class="magnifier-img"><span>+</span></div>
+            <div class="magnifier-img"><span onclick="magnifyingPic('assets/images/pic4.PNG')">+</span></div>
           </div>
           <div id="img5">
             <img src="assets/images/pic5.PNG" alt="pic5" />
-            <div class="magnifier-img"><span>+</span></div>
+            <div class="magnifier-img"><span onclick="magnifyingPic('assets/images/pic5.PNG')">+</span></div>
           </div>
         </div>
       </section>
       <!-- ***************  end portfolio  **************** -->
 
       <!-- *************** start reviews **************** -->
-      <section class="reviews-section" id="reviews-part">
-        <h1 class="reviews-h1">REVIEW</h1>
+      <section class="reviews-section" id="Review">
+        <h3 class="reviews-h3">REVIEW</h3>
         <div id="reviews-container" class="reviews"></div>
         <div class="button-container">
           <button id="back-btn" class="reviews-btn"><i class="material-symbols-outlined">chevron_left</i></button>
@@ -182,8 +183,8 @@
       <!-- ***************  end reviews  **************** -->
 
        <!-- *************** start contact **************** -->
-       <section class="contact-section" id="contact-part">
-        <h1 class="contact-h1">CONTACT</h1>
+       <section class="contact-section" id="Contact">
+        <h3 class="contact-h3">CONTACT</h3>
         <form action="mailto:saba_sana1395@yahoo.com" method="post" name="sentMessage" class="inputs" id="contact-form">
         <input id="name-input" type="text" name="name" placeholder="Your Name" required>
         <input id="email-input" type="email" name="mail" placeholder="Your Email" required>
@@ -195,11 +196,12 @@
 
       </section>
         <!-- ***************  end contact  **************** -->
+      <button class="go-up-btn" id="go-up" onclick="scrollToTop()"><i class="material-symbols-outlined">stat_3</i></button>
     </main>
     <!-- ************** End main ************** -->
 
     <!-- ************** start footer ************** -->
-    <footer>
+    <footer id="footer">
       <div>
       <img src="assets/images/logo.png" alt="logo">
       <div class="contact-icons">

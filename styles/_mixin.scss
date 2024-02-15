@@ -29,7 +29,7 @@
   }
 }
 
-@mixin little-h1-on-big-h1($Content: "") {
+@mixin little-h3-on-big-h3($Content: "") {
   &::after {
     content: $Content;
     display: block;
@@ -65,5 +65,14 @@
   to {
     transform: translateX(50vw);
     opacity: 0;
+  }
+}
+
+@keyframes up-down {
+  from {
+    transform: translateY(-20%);
+  }
+  to {
+    transform: translateY(20%);
   }
 }

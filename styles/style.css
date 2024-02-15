@@ -17,7 +17,7 @@ body, body *, main, main * {
   color: #D5B263;
 }
 
-h1 {
+h3 {
   line-height: 0.8;
   text-align: center;
   font-size: calc(3rem + 7vw);
@@ -75,6 +75,14 @@ button {
     opacity: 0;
   }
 }
+@keyframes up-down {
+  from {
+    transform: translateY(-20%);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
 body {
   position: relative;
 }
@@ -101,7 +109,7 @@ body {
 
 @media screen and (max-width: 684px) {
   .column-menu {
-    background-color: rgba(3, 16, 46, 0.9333333333);
+    background-color: rgba(3, 16, 46, 0.9333333333) !important;
     transition: background-color 0.3s ease-in-out;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.938), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -175,7 +183,7 @@ body {
   }
 }
 
-#home {
+#Home {
   font-size: 1.4rem;
   font-weight: 900;
   width: 100%;
@@ -189,7 +197,7 @@ body {
   flex-wrap: nowrap;
   gap: 3%;
 }
-#home h1 {
+#Home h1 {
   text-align: left;
   line-height: 1;
   font-size: 5rem;
@@ -197,72 +205,72 @@ body {
   -webkit-text-stroke-color: #D5B263;
 }
 @media screen and (max-width: 900px) {
-  #home h1 {
+  #Home h1 {
     font-size: 4rem;
   }
-  #home h2 {
+  #Home h2 {
     font-size: 2rem;
   }
 }
 @media screen and (max-width: 695px) {
-  #home {
+  #Home {
     font-size: 1rem;
   }
-  #home h1 {
+  #Home h1 {
     font-size: 3.5rem;
   }
-  #home h2 {
+  #Home h2 {
     font-size: 1.5rem;
     line-height: 1.2;
     max-height: 30px;
   }
-  #home .CV {
+  #Home .CV {
     margin-top: 1rem;
   }
 }
 @media screen and (max-width: 589px) {
-  #home {
+  #Home {
     flex-direction: column;
     text-align: center;
   }
-  #home .home-text {
+  #Home .home-text {
     transform: translateY(0);
     align-items: center;
   }
-  #home h1 {
+  #Home h1 {
     text-align: center;
   }
-  #home h2 {
+  #Home h2 {
     left: 0;
     bottom: -2rem;
   }
-  #home > img {
+  #Home > img {
     margin: 1rem 0;
     width: 40%;
   }
 }
 @media screen and (max-width: 491px) {
-  #home h2 {
+  #Home h2 {
     left: 0;
     bottom: -2.5rem;
   }
 }
 @media screen and (max-width: 335px) {
-  #home h1 {
+  #Home h1 {
     font-size: 2.5rem;
   }
-  #home h2 {
+  #Home h2 {
     font-size: 1.2rem;
     line-height: 1;
     border-right-width: 2px;
     height: 20px;
     bottom: -2rem;
   }
-  #home > img {
+  #Home > img {
     width: 90%;
     margin-top: 0.5rem;
   }
-  #home .CV {
+  #Home .CV {
     margin-top: 0.5rem;
   }
 }
@@ -334,10 +342,10 @@ body {
   line-height: 2;
   width: 90%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding-top: 6rem;
   min-height: 100vh;
 }
-.about-section > h1::after {
+.about-section > h3::after {
   content: "ABOUT ME";
   display: block;
   transform: translateY(-210%);
@@ -353,12 +361,6 @@ body {
   flex-wrap: nowrap;
   gap: 10%;
 }
-@media screen and (max-width: 899px) {
-  .about-section .about-Me {
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
 .about-section .about-Me > img {
   width: 35%;
   min-width: 20%;
@@ -370,52 +372,44 @@ body {
     width: 60%;
   }
 }
-.about-section .about-text {
+.about-section .about-Me > figcaption {
   width: 60%;
 }
-@media screen and (max-width: 899px) {
-  .about-section .about-text {
-    width: 100%;
-  }
-}
-.about-section .about-text > h2 {
+.about-section .about-Me > figcaption > h4 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #293040;
 }
-@media screen and (max-width: 513px) {
-  .about-section .about-text > h2 {
-    font-size: 1rem;
-    font-weight: 900;
-  }
-}
-.about-section .about-text > p {
+.about-section .about-Me > figcaption > p {
   color: #293040;
 }
 @media screen and (max-width: 513px) {
-  .about-section .about-text > p {
+  .about-section .about-Me > figcaption > h4 {
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  .about-section .about-Me > figcaption > p {
     font-size: 1rem;
   }
 }
+@media screen and (max-width: 899px) {
+  .about-section .about-Me {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-section .about-Me > figcaption {
+    width: 100%;
+  }
+}
 .about-section #my-info {
-  width: 100%;
   line-height: 3;
   padding-top: 1rem;
-}
-@media screen and (max-width: 1062px) {
-  .about-section #my-info {
-    line-height: 2.5;
-  }
+  width: 100%;
 }
 .about-section #my-info p {
   display: inline-block;
   width: 50%;
   color: #293040;
-}
-@media screen and (max-width: 1062px) {
-  .about-section #my-info p {
-    width: 100%;
-  }
 }
 @media screen and (max-width: 899px) {
   .about-section #my-info p {
@@ -433,6 +427,14 @@ body {
     font-weight: 500;
   }
 }
+@media screen and (max-width: 1062px) {
+  .about-section #my-info {
+    line-height: 2.5;
+  }
+  .about-section #my-info > p {
+    width: 100%;
+  }
+}
 
 .skills-section {
   line-height: 2;
@@ -441,10 +443,10 @@ body {
   padding: 5rem 0 2.5rem;
   min-height: 100vh;
 }
-.skills-section > h1 {
+.skills-section > h3 {
   padding-bottom: 3rem;
 }
-.skills-section > h1::after {
+.skills-section > h3::after {
   content: "MY SKILLS";
   display: block;
   transform: translateY(-210%);
@@ -458,7 +460,7 @@ body {
   grid-gap: 2rem;
 }
 .Skills-Chart span,
-.Skills-Chart h3 {
+.Skills-Chart h4 {
   color: #293040;
 }
 @media screen and (max-width: 629px) {
@@ -496,10 +498,10 @@ body {
   min-height: 100vh;
 }
 
-.services-h1 {
+.services-h3 {
   padding-bottom: 3rem;
 }
-.services-h1::after {
+.services-h3::after {
   content: "MY SERVICES";
   display: block;
   transform: translateY(-210%);
@@ -507,10 +509,10 @@ body {
   font-size: calc(1rem + 2vw);
 }
 @media screen and (max-width: 373px) {
-  .services-h1 {
+  .services-h3 {
     font-size: 50px;
   }
-  .services-h1::after {
+  .services-h3::after {
     transform: translateY(-182%);
     font-size: 20px;
   }
@@ -549,7 +551,7 @@ body {
   color: #293040;
   transition: font-size 0.6s ease-in-out;
 }
-.services-container > div > h3 {
+.services-container > div > h4 {
   color: rgb(204, 33, 204);
   font-family: "Exo", sans-serif;
   text-align: center;
@@ -592,10 +594,10 @@ body {
   padding: 5rem 5% 2.5rem;
   min-height: 100vh;
 }
-.portfolio-section > h1 {
+.portfolio-section > h3 {
   padding-bottom: 3rem;
 }
-.portfolio-section > h1::after {
+.portfolio-section > h3::after {
   content: "MY PORTFOLIO";
   display: block;
   transform: translateY(-210%);
@@ -603,18 +605,18 @@ body {
   font-size: calc(1rem + 2vw);
 }
 @media screen and (max-width: 599px) {
-  .portfolio-section > h1 {
+  .portfolio-section > h3 {
     font-size: 70px;
   }
-  .portfolio-section > h1::after {
+  .portfolio-section > h3::after {
     transform: translateY(-182%);
   }
 }
 @media screen and (max-width: 472px) {
-  .portfolio-section > h1 {
+  .portfolio-section > h3 {
     font-size: 50px;
   }
-  .portfolio-section > h1::after {
+  .portfolio-section > h3::after {
     transform: translateY(-170%);
     font-size: 20px;
   }
@@ -735,16 +737,28 @@ body {
   font-weight: 900;
 }
 
+#big-pic {
+  position: absolute;
+  z-index: 10000;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  padding: 3rem 10%;
+}
+#big-pic > img {
+  width: 100%;
+}
+
 .reviews-section {
   line-height: 2;
   width: 100%;
   padding: 5rem 5% 5rem;
   min-height: 100vh;
 }
-.reviews-section > h1 {
+.reviews-section > h3 {
   padding-bottom: 3rem;
 }
-.reviews-section > h1::after {
+.reviews-section > h3::after {
   content: "CLIENTS SAY";
   display: block;
   transform: translateY(-210%);
@@ -852,10 +866,10 @@ body {
     width: 80%;
   }
 }
-.contact-section > h1 {
+.contact-section > h3 {
   padding-bottom: 3rem;
 }
-.contact-section > h1::after {
+.contact-section > h3::after {
   content: "CONTACT ME";
   display: block;
   transform: translateY(-210%);
@@ -863,28 +877,28 @@ body {
   font-size: calc(1rem + 2vw);
 }
 @media screen and (max-width: 540px) {
-  .contact-section > h1 {
+  .contact-section > h3 {
     font-size: 60px;
   }
-  .contact-section > h1::after {
+  .contact-section > h3::after {
     transform: translateY(-156%);
   }
 }
 @media screen and (max-width: 510px) {
-  .contact-section > h1::after {
+  .contact-section > h3::after {
     transform: translateY(-160%);
   }
 }
 @media screen and (max-width: 445px) {
-  .contact-section > h1::after {
+  .contact-section > h3::after {
     transform: translateY(-170%);
   }
 }
 @media screen and (max-width: 390px) {
-  .contact-section > h1 {
+  .contact-section > h3 {
     font-size: 50px;
   }
-  .contact-section > h1::after {
+  .contact-section > h3::after {
     font-size: 20px;
     transform: translateY(-170%);
   }
@@ -893,7 +907,7 @@ body {
 .inputs {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, calc(25% - 0.8rem));
   grid-template-rows: repeat(6, 40px);
   grid-gap: 1rem;
 }
@@ -974,6 +988,26 @@ body {
     grid-column: 3/5;
     grid-row: 7/8;
   }
+}
+
+.go-up-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 7px 4px 4px;
+  z-index: 5000;
+  border: 1px solid #293040;
+  border-radius: 50%;
+  border-style: ridge;
+  background-color: white;
+  border-width: 5px;
+  animation: up-down 1s ease-in-out infinite alternate-reverse;
+}
+.go-up-btn:hover {
+  background-color: aqua;
+}
+.go-up-btn > i {
+  color: #293040;
 }
 
 footer {
