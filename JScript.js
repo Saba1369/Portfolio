@@ -155,13 +155,12 @@ function scrollFunction() {
     headerBox.style.backgroundColor = "#03102eee";
     headerBox.style.boxShadow = "rgba(0, 0, 0, 0.5) 0px 3px 8px";
     headerBox.classList.add("animate__fadeInUp");
-    
   } else {
     headerBox.style.backgroundColor = "transparent";
     headerBox.style.boxShadow = "none";
     document.getElementsByClassName("column-menu").backgroundColor =
       "#03102eee";
-      headerBox.classList.remove("animate__fadeInUp");
+    headerBox.classList.remove("animate__fadeInUp");
   }
   menuItem.forEach((item) => {
     let accessSection = document.getElementById(`${item.textContent}`);
@@ -229,6 +228,7 @@ function OnOffCircles(OnCircle) {
 
 let userNumber = -1;
 let lastUserNumber = -1;
+let clickReview = false;
 function showReview(userNum) {
   document.getElementById(
     "reviews-container"
@@ -249,10 +249,12 @@ function showAllReview() {
     ) {
       lastUserNumber = userNumber;
       userNumber++;
+      clickReview = true;
       showReview(userNumber);
     } else if (userNumber == reviews.length - 1) {
       lastUserNumber = userNumber;
       userNumber = 0;
+      clickReview = true;
       showReview(userNumber);
     }
   });
@@ -264,10 +266,12 @@ function showAllReview() {
     ) {
       lastUserNumber = userNumber;
       userNumber--;
+      clickReview = true;
       showReview(userNumber);
     } else if (userNumber == 0) {
       lastUserNumber = userNumber;
       userNumber = reviews.length - 1;
+      clickReview = true;
       showReview(userNumber);
     }
   });
@@ -276,18 +280,22 @@ function showAllReview() {
 function showReviewWithCircle(circleNumber) {
   lastUserNumber = userNumber;
   userNumber = circleNumber;
+  clickReview = true;
   showReview(userNumber);
 }
 
 function autoShowReview() {
-  if (userNumber < reviews.length - 1) {
-    lastUserNumber = userNumber;
-    userNumber++;
-  } else if (userNumber == reviews.length - 1) {
-    lastUserNumber = userNumber;
-    userNumber = 0;
+  if (!clickReview) {
+    if (userNumber < reviews.length - 1) {
+      lastUserNumber = userNumber;
+      userNumber++;
+    } else if (userNumber == reviews.length - 1) {
+      lastUserNumber = userNumber;
+      userNumber = 0;
+    }
+    showReview(userNumber);
   }
-  showReview(userNumber);
+  clickReview = false;
   setTimeout(autoShowReview, 5000);
 }
 
